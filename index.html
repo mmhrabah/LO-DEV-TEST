@@ -8,23 +8,30 @@
   <label for="score">Player Score:</label><br>
   <input type="text" id="score" name="score"><br>
   <input type="submit" id="submitBtn" value="Submit">
+  <input type="Close" id="closeBtn" value="Close">
 </form> 
 
 <script>
-let btn = document.getElementById("submitBtn");
+let closeBtn = document.getElementById("submitBtn");
 btn.addEventListener('click', event => {
-  //showAlert();
+backToUnity();
+});
+
+let submitBtn = document.getElementById("submitBtn");
+btn.addEventListener('click', event => {
   sendScoreToUnity();
+  backToUnity();
 });
 
 function sendScoreToUnity(){
 let score = document.getElementById("score");
 const scoreData = score.value;
 window.location.href = "uniwebview://action?Score="+scoreData;
-window.location.href = "uniwebview://action?Close";
 }
 
-
+function backToUnity(){
+window.location.href = "uniwebview://action?Close=true";
+}
 function showAlert(){
 let score = document.getElementById("score");
 const scoreData = score.value;
