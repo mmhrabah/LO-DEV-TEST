@@ -9,6 +9,7 @@
   <input type="text" id="score" name="score"><br>
   <input type="submit" id="submitBtn" value="Submit">
   <input type="submit" id="closeBtn" value="Close">
+  <input type="submit" id="unityBtn" value="Unity">
 </form> 
 
 <script>
@@ -22,10 +23,21 @@ submitBtn.addEventListener('click', event => {
   sendScoreToUnity();
 });
 
+let unityBtn = document.getElementById("unityBtn");
+unityBtn.addEventListener('click', event => {
+  sendScoreToUnityEditor();
+});
+
 function sendScoreToUnity(){
 let score = document.getElementById("score");
 const scoreData = score.value;
 window.location.href = "uniwebview://action?Score="+scoreData;
+}
+
+function sendScoreToUnityEditor(){
+let score = document.getElementById("score");
+const scoreData = score.value;
+window.location.href = "unitydl://mylink?Score="+scoreData;
 }
 
 function backToUnity(){
